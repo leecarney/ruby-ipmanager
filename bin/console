@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+
+require "dotenv"
+Dotenv.load
+
+require "ip_manager"
+
+IpManager.configure do |config|
+  config.base_url = ENV["base_url"]
+  config.username = ENV["username"]
+  config.password = ENV["password"]
+end
+IpManager.authenticate
+
+require "irb"
+IRB.start(__FILE__)
