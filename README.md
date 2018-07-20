@@ -23,3 +23,10 @@
 
 **For authentication (to retrieve a token):**
     IpManager.auth
+
+
+**NEW from container**
+
+docker build --rm . -t docker.artifactory.euw.platformservices.io/infra/ph/sbg_ip_manager
+ 
+ && docker push docker.artifactory.euw.platformservices.io/infra/ph/sbg_ip_manager

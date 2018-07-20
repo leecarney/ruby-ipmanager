@@ -1,11 +1,25 @@
 FROM ruby:2.5-alpine
-COPY ip_manager /tmp/build/ip_manager/
 
-WORKDIR /tmp/build/ip_manager
+RUN mkdir -p /tmp/build/ip_manager/
+COPY / /tmp/build/ip_manager/
 
-RUN apk add -U g++ make; \
-    gem build ip_manager.gemspec; \
+RUN mkdir -p /usr/local/bundle/bin/ip_manager/
+
+RUN chmod 777 -R /usr/local/bundle/bin/ip_manager
+
+WORKDIR /usr/local/bundle/bin/ip_manager
+
+COPY . ./
+
+EXPOSE 3000
+
+RUN apk add -U git g++ make; \
+    gem build /tmp/build/ip_manager/ip_manager.gemspec; \
     bundle install --quiet; \
-    gem install -l ip_manager
+    gem install faraday; \
+    rake install;
 
-ENTRYPOINT ["/usr/local/bundle/bin/ip_manager"]
+
+CMD ["rails", "server", "-b", "0.0.0.0"]
+
+ENTRYPOINT ["bundle", "exec", "ash", "/usr/local/bundle/bin/ip_manager/lib/ip_manager/"]
