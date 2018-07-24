@@ -8,25 +8,11 @@
     set App Security to none > click Edit (to save)
     5. Each subnet has 'Ip Requests' set to 'no' as default. This needs changing to Yes.
 
-**For development:**
-    run rake install
-    then,
-    ruby example.rb
 
-**To get started**
-    look at example.rb
+**Using docker with IP_Manager**
 
-**For config:**
-    IpManager.api_base = "http://127.0.0.1/api/sbg/"
-    IpManager.api_username = 'Admin'
-    IpManager.api_password = "password"
-
-**For authentication (to retrieve a token):**
-    IpManager.auth
-
-
-**NEW from container**
-
-docker build --rm . -t docker.artifactory.euw.platformservices.io/infra/ph/sbg_ip_manager
+1. docker build --rm . -t docker.artifactory.euw.platformservices.io/infra/ph/sbg_ip_manager
  
- && docker push docker.artifactory.euw.platformservices.io/infra/ph/sbg_ip_manager
+2. docker push docker.artifactory.euw.platformservices.io/infra/ph/sbg_ip_manager
+  
+3. docker run -t --rm docker.artifactory.euw.platformservices.io/infra/ph/sbg_ip_manager:latest 'create' 'APP_SPORTSBOOK_SRV02' 'TestHostname' 'Physical Hosting'

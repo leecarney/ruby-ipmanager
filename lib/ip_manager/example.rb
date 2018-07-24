@@ -1,8 +1,13 @@
 require 'ip_manager'
 
-def request_ip
-  # Example to configure credentials, attempt to authorise & then create a single new Ip address
-  # with tagged data for owner and hostname
+method = ARGV[0]
+subnet_target = ARGV[1] # e.g. APP_SPORTSBOOK_SRV02
+hostname_tag = ARGV[2] # e.g. TestHostname
+owner_tag = ARGV[3] # e.g. Physical Hosting
+
+case method
+
+when "create"
 
   IpManager.api_base = "https://ipam.test8.skybet.net/api/sbg"
   IpManager.api_username = 'sbg1'
@@ -11,11 +16,12 @@ def request_ip
   IpManager.auth
 
   IpManager::IpAddress.allocate_ip(
-      :subnet_target => 'APP_SPORTSBOOK_SRV02',
-      :hostname_tag => 'TestHostname',
-      :owner_tag => 'Physical Hosting',
-      )
+      :subnet_target => subnet_target,
+      :hostname_tag => hostname_tag,
+      :owner_tag => owner_tag,
+  )
+else
+  puts 'Method not found' # Add user instructions here for fail
 end
 
-request_ip
 
