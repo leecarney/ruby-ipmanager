@@ -12,4 +12,4 @@ RUN apk add -U git g++ make; \
     gem install faraday; \
     rake install
 
-ENTRYPOINT ["ruby", "/usr/local/bundle/bin/ip_manager/lib/ip_manager/sbgipmanager.rb"]
+ENTRYPOINT ["ruby", "/usr/local/bundle/bin/ip_manager/lib/ip_manager/myipmanager.rb"]

@@ -6,11 +6,11 @@ require "ip_manager/version"
 Gem::Specification.new do |spec|
   spec.name          = "ip_manager"
   spec.version       = IpManager::VERSION
-  spec.authors       = ["Skybet"]
-  spec.email         = ["infra@skybettingandgaming.com"]
-  spec.homepage      = "https://skybet.com"
-  spec.summary       = "SBG1 function"
-  spec.description   = "SBG1 function - IP manager"
+  spec.authors       = ["LeeC"]
+  spec.email         = ["edited@edit.com"]
+  spec.homepage      = "https://github.com"
+  spec.summary       = "MyIP function"
+  spec.description   = "MyIP function - IP manager"
   spec.license       = "Nonstandard"
   spec.files         = `git ls-files -z`.split("\x0")
   spec.bindir        = "exe"

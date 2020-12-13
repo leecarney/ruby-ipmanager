@@ -257,7 +257,7 @@ module IpManager
 
     def request_headers(method)
       headers = {
-          "User-Agent" => "sbg1-ipmanager",
+          "User-Agent" => "my-ipmanager",
           "token" => $token,
           #"Content-Type" => "application/x-www-form-urlencoded",
           # This can sometimes cure invalid key errors usually caused by / in the URL
